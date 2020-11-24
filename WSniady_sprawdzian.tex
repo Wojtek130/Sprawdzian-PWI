@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+% Można też użyć UTF-8
+\usepackage[utf8]{inputenc}
+% Język
+\usepackage[polish]{babel}
+% \usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\author{Wojciech Śniady, nr indeksu 322993}
+ \title{Sprawdzian z PWI}
+\date{\today}
+
+\begin{document}
+
+ \maketitle
+ 
+ \section{Zadanie 1}
+ \begin{verbatim}
+ssh-keygen
+ssh-copy-id -i /home/wojtek_ubu/.ssh/pwi_rsa.pub mpyzik@pwi.ii.uni.wroc.pl
+ssh 'mpyzik@pwi.ii.uni.wroc.pl'
+\end{verbatim}
+
+ \section{Zadanie 2}
+  \begin{verbatim}
+ls \-R ~
+touch wojciech_sniady
+vi wojciech_sniady
+less wojciech_sniady
+echo "7 14 21 28 35 42 49 56 63 70 77 84 91 98" >> wojciech_sniady
+mkdir testy
+mv ./wojciech_sniady ./testy/
+exit
+scp mpyzik@pwi.ii.uni.wroc.pl:/home/mpyzik/wojciech_sniady/testy/wojciech_sniady ./ 
+ssh 'mpyzik@pwi.ii.uni.wroc.pl'
+
+\end{verbatim}
+
+ \section{Zadanie 3}
+ \begin{verbatim}
+cd ~/wojciech_sniady
+mkdir dane
+cd dane
+hexdump /dev/urandom | head > f1
+hexdump /dev/urandom | head > f2
+hexdump /dev/urandom | head > f3
+hexdump /dev/urandom | head > f4
+hexdump /dev/urandom | head > f5
+touch concat
+cat f1 >> concat
+cat f2 >> concat
+cat f3 >> concat
+cat f4 >> concat
+cat f5 >> concat 
+grep -E "^0.*([0-9a-f][0-9a-f])\1$" concat > output
+wc -l concat 
+wc -l output
+
+
+\end{verbatim}
+
+ \includegraphics[width=150mm,scale=0.5]{/home/wojtek_ubu/Pictures/screen1.png}
+
+  \section{Screen z pisania raportu}
+  
+   \includegraphics[width=150mm,scale=0.5]{/home/wojtek_ubu/Pictures/screen2.png}
+
+ \end{document}
